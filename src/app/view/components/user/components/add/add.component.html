@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-6 col-md-6 col-sm-9 col-12 mx-auto my-5">
+      <button mdbBtn color="info" class="my-4" type="submit" (click)="getList()">Student list</button>
+      <!-- Card start -->
+      <div class="card">
+        <!-- Card header -->
+        <h5 class="card-header info-color white-text text-center py-4 text-upper z-depth-3 header-font-size">
+          <strong>Add new Student</strong>
+        </h5>
+        <!-- card body -->
+        <div class="card-body px-lg-5 pt-0">
+          <!-- Form start -->
+          <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" class="text-color">
+
+            <!-- first name -->
+            <div class="md-form">
+              <input mdbInput mdbValidate formControlName="first_name" autocomplete="additional-name" type="text"
+                class="form-control" id="first_name">
+              <label for="first_name">First Name</label>
+              <mdb-error *ngIf="first_name.invalid && (first_name.dirty || first_name.touched)">
+                <div *ngIf="first_name.errors.required">
+                  First Name is required.
+                </div>
+                <div *ngIf="first_name.errors.minLength">
+                  First Name should be greater then 1 character
+                </div>
+                <div *ngIf="first_name.errors.maxLength">
+                  First Name should be less then 100 character
+                </div>
+                <div *ngIf="first_name.errors.pattern">
+                  First Name should only contain alphabets
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="first_name.valid && (first_name.dirty || first_name.touched)">
+              </mdb-success>
+            </div>
+
+            <!-- last name -->
+            <div class="md-form">
+              <input mdbInput mdbValidate formControlName="last_name" autocomplete="additional-name" type="text"
+                class="form-control" id="last_name">
+              <label for="last_name">Last Name</label>
+              <mdb-error *ngIf="last_name.invalid && (last_name.dirty || last_name.touched)">
+                <div *ngIf="last_name.errors.required">
+                  Last Name is required.
+                </div>
+                <div *ngIf="last_name.errors.minLength">
+                  Last Name should be greater then 1 character
+                </div>
+                <div *ngIf="last_name.errors.maxLength">
+                  Last Name should be less then 100 character
+                </div>
+                <div *ngIf="last_name.errors.pattern">
+                  Last Name should only contain alphabets
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="last_name.valid && (last_name.dirty || last_name.touched)">
+              </mdb-success>
+            </div>
+
+            <!-- Email -->
+            <div class="md-form">
+              <input mdbInput mdbValidate formControlName="email" autocomplete="email" type="text" class="form-control"
+                id="email">
+              <label for="email">Email</label>
+              <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors.required">
+                  Email is required.
+                </div>
+                <div *ngIf="email.errors.email">
+                  Enter valid email
+                </div>
+                <div *ngIf="email.errors.maxLength">
+                  Email should be less then 100 character
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">
+              </mdb-success>
+            </div>
+
+            <!-- Add button -->
+            <button mdbBtn color="info" block="true" class="my-4" type="submit" (keyup.enter)="onSubmit()">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>

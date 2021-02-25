@@ -1,0 +1,35 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12
+   container-space text-left pr-0">
+   <button mdbBtn color="info" class="my-4" type="submit" (click)="addNewUser()">Add new student</button>
+
+  <table class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 table table-striped table-bordered p-0" style="width: 95%;overflow-x: auto;">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userList">
+        <td>{{user.first_name}}</td>
+        <td>{{user.email}}</td>
+        <td>
+           <div class="row col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+               <mdb-icon fas icon="pencil-alt" class="text-warning font-bold cursor-pointer" (click)="updateUser(user._id)"></mdb-icon>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+               <mdb-icon far icon="trash-alt" class="text-danger font-bold cursor-pointer" (click)="removeuser(user._id)"></mdb-icon>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-4">
+                <mdb-icon far icon="eye" class="text-info font-bold cursor-pointer" (click)="seeUser(user._id)"></mdb-icon>
+               </div>
+           </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+

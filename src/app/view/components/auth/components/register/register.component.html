@@ -1,0 +1,135 @@
+<ngx-spinner bdColor="rgba(200,200,200,0.8)"
+size="medium"
+color="#ffffff"
+type="ball-fussion"></ngx-spinner>
+<div class="container">
+  <div class="row">
+    <div class="col-xl-5 col-md-6 col-sm-9 col-12 mx-auto my-5">
+      <!-- Material form register -->
+      <div class="card">
+
+        <h5 class="card-header info-color white-text text-center py-4 text-uppercase z-depth-3 header-font-size">
+          <strong>Join Us</strong>
+
+        </h5>
+
+        <!--Card content-->
+        <div class="card-body px-lg-5 pt-0">
+
+          <!-- Form -->
+          <form [formGroup]="registrationForm" class="text-color" autocomplete="off">
+
+            <div class="md-form">
+              <!-- Name -->
+              <input mdbInput mdbValidate formControlName="name" type="text" id="userName"
+                  autocomplete="off" class="form-control">
+                <label for="userName">Name</label>
+                <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                  <div *ngIf="name.errors.required">
+                    Name is required.
+                  </div>
+                  <div *ngIf="name.errors.minlength">
+                    Name must be at least 2 characters long.
+                  </div>
+                  <div *ngIf="name.errors.maxlength">
+                    Name can be max 25 characters long.
+                  </div>
+                  <div *ngIf="name.errors.pattern">
+                    Name is not valid.
+                  </div>
+                </mdb-error>
+            </div>
+
+            <!-- E-mail -->
+            <div class="md-form mt-0">
+              <input mdbInput mdbValidate formControlName="email" minLength="8" maxLength="25" type="email"
+              autocomplete="off" class="form-control" id="userEmail">
+              <label for="userEmail">Email</label>
+              <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                <div *ngIf="email.errors.required">
+                  Email is required.
+                </div>
+                <div *ngIf="email.errors.email">
+                  Email is not valid
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">
+              </mdb-success>
+            </div>
+
+            <!-- Password -->
+            <div class="md-form">
+              <input [type]="hidePassword ? 'password' : 'text'" id="userPassword" class="form-control"
+                aria-describedby="passwordHelpBlock" autocomplete="new-password" mdbInput mdbValidate
+                formControlName="password">
+              <i [ngClass]="{
+                  'fas fa-eye-slash': hidePassword,
+                  'fa fa-eye': !hidePassword
+                }" class="eye-position" (click)="togglePasswordType()"></i>
+              <label for="userPassword">Password</label>
+              <mdb-error *ngIf="password.invalid && (password.dirty || password.touched)" class="password-error">
+                <div *ngIf="password.errors.required">
+                  Password is required.
+                </div>
+                <div *ngIf="password.errors.pattern">
+                  <span class="password-error-msg">
+                    Password is not valid.
+                    At least 8 characters in length
+                    Lowercase letters
+                    Uppercase letters
+                    Numbers
+                    Special characters
+                  </span>
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="password.valid && (password.dirty || password.touched)">
+              </mdb-success>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="md-form">
+              <input [type]="hideConfirmPassword ? 'password' : 'text'" id="confirmPassword" class="form-control"
+                autocomplete="new-password" aria-describedby="confirmPasswordHelpBlock" mdbInput mdbValidate
+                formControlName="confirmPassword">
+              <i [ngClass]="{
+                  'fas fa-eye-slash': hideConfirmPassword,
+                  'fa fa-eye': !hideConfirmPassword
+                }" class="eye-position" (click)="toggleConfirmPasswordType()"></i>
+              <label for="confirmPassword">Confirm Password</label>
+              <mdb-error *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+                <div *ngIf="confirmPassword.errors.required">
+                  Confirm Password is required.
+                </div>
+                <div *ngIf="confirmPassword.errors.mustMatch">
+                  Password does not match
+                </div>
+              </mdb-error>
+              <mdb-success *ngIf="confirmPassword.valid && (confirmPassword.dirty || confirmPassword.touched)">
+              </mdb-success>
+            </div>
+
+            <div *ngIf="success">
+              <span class="text-success">Registered successfully</span>
+            </div>
+
+            <div *ngIf="fail">
+              <span class="text-danger">{{fail}}</span>
+            </div>
+            <br>
+            <!-- Sign up button -->
+            <button mdbBtn color="info" block="true" class="my-4" type="submit" (click)="onSubmit()">Sign Up</button>
+
+          </form>
+          <!-- Form -->
+
+          <!-- Already an user -->
+          <p class="text-center">Already an user?
+            <a (click)="needToLogin()" class="blue-text">Sign In</a>
+          </p>
+        </div>
+
+      </div>
+      <!-- Material form register -->
+    </div>
+  </div>
+</div>

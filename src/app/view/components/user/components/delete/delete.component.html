@@ -1,0 +1,56 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12
+   container-space text-left ml-3 pr-0">
+  <button mdbBtn color="info" class="my-4" type="submit" (click)="getList()">Student list</button>
+  <table class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 table table-striped table-bordered p-0 mt-2"
+    style="width: 95%;overflow-x: auto;">
+    <tbody *ngIf="userDetail">
+      <tr>
+        <td>
+          First Name
+        </td>
+        <td>
+          {{userDetail.first_name}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Last Name
+        </td>
+        <td>
+          {{userDetail.last_name}}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Email
+        </td>
+        <td>
+          {{userDetail.email}}
+        </td>
+      </tr>
+      <tr *ngIf="userDetail.fees">
+        <td>
+          Fees
+        </td>
+        <td>
+          {{userDetail.fees}}
+        </td>
+      </tr>
+      <tr *ngIf="userDetail.class">
+        <td>
+          Class
+        </td>
+        <td>
+          {{userDetail.class}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="text-center" *ngIf="userDetail">
+    <button mdbBtn color="danger" class="my-4" type="submit" (click)="deleteUser()">Delete User</button>
+  </div>
+
+  <div *ngIf="!userDetail">
+    No user found
+  </div>
+</div>
